@@ -64,7 +64,7 @@ pub struct Burger {
     patty: Patty,
     cheese: Option<Cheese>,
     toppings: Vec<Topping>,
-    saucess: Vec<Sauce>,
+    sauces: Vec<Sauce>,
 }
 
 impl Burger {
