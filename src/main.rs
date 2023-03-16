@@ -1,4 +1,6 @@
-use actix_web::{get, middleware::Logger, App, HttpRequest, HttpResponse, HttpServer, Responder};
+use actix_web::{
+    get, middleware::Logger, post, web, App, HttpRequest, HttpResponse, HttpServer, Responder,
+};
 use dotenvy::dotenv;
 use env_logger::Env;
 
@@ -8,6 +10,11 @@ use burger::Burger;
 #[get("/ingredients")]
 async fn list_ingredients() -> impl Responder {
     HttpResponse::Ok().json(Burger::list_ingredients())
+}
+
+#[post("/burgers")]
+async fn create_burger(params: web::Json<Burger>) -> impl Responder {
+    HttpResponse::Created().json(params.into_inner())
 }
 
 #[actix_web::main]
@@ -21,6 +28,7 @@ async fn main() -> std::io::Result<()> {
             .wrap(Logger::default())
             .service(status_handler)
             .service(list_ingredients)
+            .service(create_burger)
     })
     .bind(("0.0.0.0", 8080))?
     .run()

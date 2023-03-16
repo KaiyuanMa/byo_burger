@@ -1,5 +1,5 @@
 use reqwest::Client;
-use serde_json::Value;
+use serde_json::{json, Value};
 use std::collections::HashMap;
 use tokio;
 
@@ -80,8 +80,22 @@ async fn create_burger() {
     let scheme = std::env::var("API_SCHEME").expect("api scheme");
     let host = std::env::var("API_HOST").expect("api host");
 
+    let create_burger_params = json!({
+        "bun": "sesame",
+        "patty": "double",
+        "cheese": "american",
+        "toppings": [
+            "grilled_onions",
+            "bacon",
+        ],
+        "sauces": [
+            "mustard"
+        ]
+    });
+
     let create_burger_res = Client::new()
         .post(format!("{}://{}/burgers", scheme, host))
+        .json(&create_burger_params)
         .send()
         .await
         .expect("create burger res");

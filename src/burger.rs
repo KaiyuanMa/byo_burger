@@ -3,6 +3,7 @@ use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
 #[derive(Debug, Serialize, Deserialize, Display)]
+#[serde(rename_all = "snake_case")]
 enum Bun {
     #[display(fmt = "sesame")]
     Sesame,
@@ -13,6 +14,7 @@ enum Bun {
 }
 
 #[derive(Debug, Serialize, Deserialize, Display)]
+#[serde(rename_all = "snake_case")]
 enum Patty {
     #[display(fmt = "single")]
     Single,
@@ -23,6 +25,7 @@ enum Patty {
 }
 
 #[derive(Debug, Serialize, Deserialize, Display)]
+#[serde(rename_all = "snake_case")]
 enum Cheese {
     #[display(fmt = "american")]
     American,
@@ -35,6 +38,7 @@ enum Cheese {
 }
 
 #[derive(Debug, Serialize, Deserialize, Display)]
+#[serde(rename_all = "snake_case")]
 enum Topping {
     #[display(fmt = "lettuce")]
     Lettuce,
@@ -47,6 +51,7 @@ enum Topping {
 }
 
 #[derive(Debug, Serialize, Deserialize, Display)]
+#[serde(rename_all = "snake_case")]
 enum Sauce {
     #[display(fmt = "mustard")]
     Mustard,
