@@ -14,9 +14,9 @@ cargo run
 API_SCHEME=http API_HOST=localhost:8080 cargo test
 ```
 
-get: http://localhost:8080/ingredients
+get: /ingredients
 
-post http://localhost:8080/burgers
+post /burgers
 params: {
 "bun": String,
 "patty": String,
