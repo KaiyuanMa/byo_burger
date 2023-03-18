@@ -14,13 +14,5 @@ cargo run
 API_SCHEME=http API_HOST=localhost:8080 cargo test
 ```
 
-get: /ingredients
-
-post /burgers
-params: {
-"bun": String,
-"patty": String,
-"cheese": String,
-"toppings": Array,
-"sauces": Array,
-}
+server default port: 8080
+client default port: 3000
